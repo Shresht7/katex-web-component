@@ -40,10 +40,10 @@ This project defines a custom element named `<ka-tex>` that renders LaTeX-style 
     $E=mc^2$
 
     ```html
-    <ka-tex block expression="\sigma = \frac{\sum_0^N{(x - \mu)^2}}{N}"></ka-tex>
+    <ka-tex block expression="\sigma^2 = \frac{\sum_{i=0}^{N} (x_i - \mu)^2}{N}"></ka-tex>
     ```
 $$
-\sigma = \frac{\sum_0^N{(x - \mu)^2}}{N}
+\sigma^2 = \frac{\sum_{i=0}^{N} (x_i - \mu)^2}{N}
 $$
 
 ---
