@@ -54,7 +54,12 @@ class KaTex extends HTMLElement {
 
 	/** The `renderKaTeX` method uses KaTeX to render the mathematical expression. */
 	renderKaTeX(expression) {
-		if (!expression) { return }
+
+		// Clear the container if no expression is provided
+		if (!expression) {
+			this.container.replaceChildren()
+			return
+		}
 
 		try {
 			katex.render(expression, this.container, {
@@ -69,6 +74,7 @@ class KaTex extends HTMLElement {
 			this.container.style.color = this.errorColor
 			console.error('KaTeX rendering error:', error)
 		}
+
 	}
 }
 
