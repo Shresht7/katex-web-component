@@ -98,6 +98,11 @@ class KaTex extends HTMLElement {
 		}
 
 	}
+
+	/** Re-renders the current expression using KaTeX. */
+	render() {
+		this.renderKaTeX(this.expression)
+	}
 }
 
 // -----------------------------------
