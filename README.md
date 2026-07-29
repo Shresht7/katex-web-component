@@ -116,6 +116,38 @@ $$
 | `throw-on-error` | Throws an error instead of showing the raw expression in red |
 | `error-color`    | Sets the color used for fallback/error rendering             |
 
+## JavaScript API
+
+### `expression`
+
+Read or update an element's expression with its `expression` property. Setting it re-renders the element; set it to `null` or `undefined` to clear the rendered output.
+
+```js
+const math = document.querySelector('ka-tex')
+
+math.expression = 'E = mc^2'
+math.expression = null
+```
+
+### `render()`
+
+Re-render the current expression manually.
+
+```js
+document.querySelector('ka-tex').render()
+```
+
+### `katex-error` event
+
+When KaTeX cannot render an expression and `throw-on-error` is not present, `<ka-tex>` renders its fallback and dispatches a bubbling `katex-error` event. The event's `detail` contains the original `error` and `expression`.
+
+```js
+document.addEventListener('katex-error', event => {
+    const { error, expression } = event.detail
+    console.error(`Could not render ${expression}:`, error)
+})
+```
+
 ## Demo
 
 Open [index.html](index.html) in a browser to see the component in action.
