@@ -90,6 +90,13 @@ class KaTex extends HTMLElement {
 			// If throwOnError is true, rethrow the error to allow external handling
 			if (this.throwOnError) { throw error }
 
+			// Dispatch a custom event to notify about the KaTeX rendering error
+			this.dispatchEvent(new CustomEvent('katex-error', {
+				detail: { error, expression },	// Provide error details in the event
+				bubbles: true,					// Allow the event to bubble up through the DOM
+				composed: true					// Allow the event to cross shadow DOM boundaries
+			}))
+
 			// Otherwise, hard fallback in case KaTeX fails to render the expression
 			this.container.innerText = expression
 			this.container.style.color = this.errorColor
