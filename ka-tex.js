@@ -37,7 +37,12 @@ class KaTex extends HTMLElement {
 	/** The `attributeChangedCallback` is called whenever one of the observed attributes changes. */
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
-			this.renderKaTeX(newValue)
+			if (name === 'expression') {
+				this.renderKaTeX(newValue)
+			} else {
+				const currentExpression = this.getAttribute('expression')
+				this.renderKaTeX(currentExpression)
+			}
 		}
 	}
 
