@@ -2,9 +2,19 @@
 
 A super lightweight [web component][Web Components] for rendering mathematical expressions with [KaTeX][KaTeX] declaratively.
 
+```html
+<ka-tex block expression="\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}"></ka-tex>
+```
+
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
 This project defines a custom element named `<ka-tex>` that renders LaTeX-style expressions inside a shadow DOM, with support for inline and block rendering, custom error handling, and live updates.
 
 `<ka-tex>` simply wraps the [KaTeX][KaTeX] library and provides a declarative way to include math in your web pages. Since this is a [web-component][Web Components], it can be used in any modern browser and in any framework.
+
+---
 
 ## Features
 
