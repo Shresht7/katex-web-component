@@ -36,6 +36,33 @@ $$
 \sigma = \frac{\sum_0^N{(x - \mu)^2}}{N}
 $$
 
+---
+
+## This vs KaTeX directly
+
+[KaTeX][KaTeX] provides an imperative JavaScript API for rendering math expressions. This component wraps that API in a declarative way, allowing you to use HTML attributes to specify the expression and rendering options.
+
+```js
+// Imperative
+const container = document.getElementById('math-container');
+katex.render('E = mc^2', container, { displayMode: true });
+```
+
+vs
+
+```html
+<!-- Declarative -->
+<ka-tex expression="E = mc^2" block></ka-tex>
+```
+
+This works out better for dynamic sites, as you can simply update the `expression` attribute and the component will handle the re-rendering logic automatically. It also encapsulates the KaTeX library and its CSS, so you don't have to worry about style conflicts or loading the library yourself.
+
+### When not to use the web-component and use KaTeX directly
+
+If you're making static sites and don't expect the math expressions to change dynamically, you should use [KaTeX][KaTeX] directly, as it will be more efficient and allow you to pre-render the math expressions at build time.
+
+---
+
 ## Usage
 
 ### Inline expression
