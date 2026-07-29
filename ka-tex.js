@@ -62,17 +62,24 @@ class KaTex extends HTMLElement {
 		}
 
 		try {
+
 			katex.render(expression, this.container, {
 				displayMode: this.hasAttribute('block'), 	// Render in block mode if the 'block' attribute is present
 				throwOnError: this.throwOnError, 			// KaTeX will render the raw string in red instead of throwing an error
 				errorColor: this.errorColor
 				// FUTURE: Expose additional options as attributes as needed. https://katex.org/docs/options
 			})
+
 		} catch (error) {
-			// Hard fallback in case KaTeX fails to render the expression
+
+			// If throwOnError is true, rethrow the error to allow external handling
+			if (this.throwOnError) { throw error }
+
+			// Otherwise, hard fallback in case KaTeX fails to render the expression
 			this.container.innerText = expression
 			this.container.style.color = this.errorColor
 			console.error('KaTeX rendering error:', error)
+
 		}
 
 	}
