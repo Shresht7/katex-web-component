@@ -137,7 +137,7 @@ document.addEventListener('katex-error', event => {
 
 ## Demo
 
-Open [index.html](index.html) in a browser to see rendered inline and block expressions, error handling, and live expression updates.
+Open [index.html](index.html) in a browser to see rendered inline and block expressions, error handling, and a live expression preview.
 
 ## Todos
 

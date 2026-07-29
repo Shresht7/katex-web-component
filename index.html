@@ -24,18 +24,19 @@
         which case an error will be thrown.</p>
 
     <h2>Dynamic Update</h2>
-    <p>Type a <ka-tex expression="\LaTeX"></ka-tex> expression in the input below to see it rendered live.</p>
-    <ka-tex id="dynamic" expression="x^2 + y^2 = z^2" style="padding: 0 0.5rem;"></ka-tex>
-    <div style="margin-block: 0.5rem;"></div>
-    <input type="text" id="input" placeholder="x^2 + y^2 = z^2" style="padding: 0.5rem 0.5rem;" />
+    <p>Dynamically update a <ka-tex expression="\LaTeX"></ka-tex> expression to at runtime.</p>
+    <div class="preview">
+        <ka-tex id="dynamic" block expression="x^2 + y^2 = z^2"></ka-tex>
+    </div>
+    <label for="input">LaTeX</label>
+    <textarea id="input" spellcheck="false" placeholder="x^2 + y^2 = z^2">x^2 + y^2 = z^2</textarea>
 
     <script type="module">
         const dynamicKaTex = document.getElementById('dynamic');
         const input = document.getElementById('input');
 
         input.addEventListener('input', () => {
-            const expr = input.value || input.getAttribute('placeholder');
-            dynamicKaTex.setAttribute('expression', expr);
+            dynamicKaTex.expression = input.value || input.getAttribute('placeholder');
         });
     </script>
 
@@ -49,6 +50,25 @@
         max-width: 800px;
         margin: 0 auto;
         color-scheme: light dark;
+    }
+
+    textarea {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 6rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        font: inherit;
+        resize: vertical;
+    }
+
+    .preview {
+        display: grid;
+        place-items: center;
+        min-height: 8rem;
+        margin-block: 1rem;
+        overflow: auto;
+        border: 2px solid #777;
     }
 
     @media (prefers-color-scheme: dark) {
