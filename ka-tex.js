@@ -6,10 +6,21 @@ class KaTex extends HTMLElement {
 		this.shadowRoot.append(this.container)
 	}
 
+	observedAttributes = ['expression']
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (oldValue !== newValue) {
+			this.renderKaTeX(newValue)
+		}
+	}
+
 	connectedCallback() {
-		setInterval(() => {
-			this.container.innerText = Math.random().toString()
-		}, 1000)
+		this.container.innerText = this.getAttribute('expression') || ''
+	}
+
+	renderKaTeX(expression) {
+		if (!expression) { return }
+		this.container.innerText = expression
 	}
 }
 
