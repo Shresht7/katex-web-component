@@ -54,6 +54,7 @@ class KaTex extends HTMLElement {
 				displayMode: this.hasAttribute('block'), 	// Render in block mode if the 'block' attribute is present
 				throwOnError: this.throwOnError, 			// KaTeX will render the raw string in red instead of throwing an error
 				errorColor: this.errorColor
+				// FUTURE: Expose additional options as attributes as needed. https://katex.org/docs/options
 			})
 		} catch (error) {
 			// Hard fallback in case KaTeX fails to render the expression
