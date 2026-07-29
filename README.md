@@ -93,19 +93,6 @@ $$
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
 $$
 
-### Custom error styling
-
-```html
-<ka-tex expression="\fakeCommand{\pi}" error-color="#ff8800"></ka-tex>
-```
-
-<span style="color: #ff8800;">\fakeCommand</span>${\pi}$
-
-### Throw errors instead of rendering them
-
-```html
-<ka-tex expression="\fakeCommand{\pi}" throw-on-error></ka-tex>
-```
 
 ## Attributes
 
@@ -150,7 +137,7 @@ document.addEventListener('katex-error', event => {
 
 ## Demo
 
-Open [index.html](index.html) in a browser to see the component in action.
+Open [index.html](index.html) in a browser to see rendered inline and block expressions, error handling, and live expression updates.
 
 ## Todos
 
