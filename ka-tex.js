@@ -22,6 +22,11 @@ class KaTex extends HTMLElement {
 	/** The observedAttributes getter tells the browser which attributes to monitor for changes. */
 	observedAttributes = ['expression', 'block']
 
+	/** The color in which errors will be displayed. Defaults to red if not specified. */
+	get errorColor() {
+		return this.getAttribute('error-color') || '#cc0000'
+	}
+
 	/** The attributeChangedCallback is called whenever one of the observed attributes changes. */
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
@@ -43,11 +48,12 @@ class KaTex extends HTMLElement {
 			katex.render(expression, this.container, {
 				displayMode: this.hasAttribute('block'), 	// Render in block mode if the 'block' attribute is present
 				throwOnError: false, 						// KaTeX will render the raw string in red instead of throwing an error
-				errorColor: "#cc0000"
+				errorColor: this.errorColor
 			})
 		} catch (error) {
 			// Hard fallback in case KaTeX fails to render the expression
 			this.container.innerText = expression
+			this.container.style.color = this.errorColor
 			console.error('KaTeX rendering error:', error)
 		}
 	}
