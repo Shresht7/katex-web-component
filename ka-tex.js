@@ -27,6 +27,20 @@ class KaTex extends HTMLElement {
 		return ['expression', 'block', 'throw-on-error', 'error-color']
 	}
 
+	/** The mathematical expression to be rendered by KaTeX. */
+	get expression() {
+		return this.getAttribute('expression') || ''
+	}
+
+	/** The mathematical expression to be rendered by KaTeX. */
+	set expression(expr) {
+		if (expr === null || expr === undefined) {
+			this.removeAttribute('expression')
+			return
+		}
+		this.setAttribute('expression', String(expr))
+	}
+
 	/** if 'throw-on-error' attribute is present, KaTeX will throw errors instead of rendering them in red. */
 	get throwOnError() {
 		return this.hasAttribute('throw-on-error')
@@ -41,18 +55,16 @@ class KaTex extends HTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
 			if (name === 'expression') {
-				this.renderKaTeX(newValue)
+				this.renderKaTeX(newValue)			// Re-render with the new expression
 			} else {
-				const currentExpression = this.getAttribute('expression')
-				this.renderKaTeX(currentExpression)
+				this.renderKaTeX(this.expression) 	// Re-render with the current expression to apply new settings
 			}
 		}
 	}
 
 	/** The `connectedCallback` is called when the element is added to the DOM. */
 	connectedCallback() {
-		const expression = this.getAttribute('expression')
-		this.renderKaTeX(expression)
+		this.renderKaTeX(this.expression) 			// Render the initial expression when the element is connected
 	}
 
 	/** The `renderKaTeX` method uses KaTeX to render the mathematical expression. */
