@@ -18,6 +18,11 @@
     <h2>Block Expressions</h2>
     <ka-tex block expression="\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}"></ka-tex>
 
+    <h2>Invalid Expression</h2>
+    <ka-tex expression="\fakeCommand{\pi}"></ka-tex>
+    <p>Expressions that contain errors will be displayed in red unless the 'throw-on-error' attribute is present, in
+        which case an error will be thrown.</p>
+
 </body>
 
 </html>

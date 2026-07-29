@@ -22,6 +22,11 @@ class KaTex extends HTMLElement {
 	/** The observedAttributes getter tells the browser which attributes to monitor for changes. */
 	observedAttributes = ['expression', 'block']
 
+	/** if 'throw-on-error' attribute is present, KaTeX will throw errors instead of rendering them in red. */
+	get throwOnError() {
+		return this.hasAttribute('throw-on-error')
+	}
+
 	/** The color in which errors will be displayed. Defaults to red if not specified. */
 	get errorColor() {
 		return this.getAttribute('error-color') || '#cc0000'
@@ -47,7 +52,7 @@ class KaTex extends HTMLElement {
 		try {
 			katex.render(expression, this.container, {
 				displayMode: this.hasAttribute('block'), 	// Render in block mode if the 'block' attribute is present
-				throwOnError: false, 						// KaTeX will render the raw string in red instead of throwing an error
+				throwOnError: this.throwOnError, 			// KaTeX will render the raw string in red instead of throwing an error
 				errorColor: this.errorColor
 			})
 		} catch (error) {
