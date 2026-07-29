@@ -20,7 +20,7 @@ class KaTex extends HTMLElement {
 	}
 
 	/** The observedAttributes getter tells the browser which attributes to monitor for changes. */
-	observedAttributes = ['expression']
+	observedAttributes = ['expression', 'block']
 
 	/** The attributeChangedCallback is called whenever one of the observed attributes changes. */
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -41,7 +41,8 @@ class KaTex extends HTMLElement {
 
 		try {
 			katex.render(expression, this.container, {
-				throwOnError: false, // KaTeX will render the raw string in red instead of throwing an error
+				displayMode: this.hasAttribute('block'), 	// Render in block mode if the 'block' attribute is present
+				throwOnError: false, 						// KaTeX will render the raw string in red instead of throwing an error
 				errorColor: "#cc0000"
 			})
 		} catch (error) {
