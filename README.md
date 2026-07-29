@@ -1,14 +1,14 @@
 # KaTeX Web Component
 
-A super lightweight web component for rendering mathematical expressions with KaTeX declaratively.
+A super lightweight [web component][Web Components] for rendering mathematical expressions with [KaTeX][KaTeX] declaratively.
 
 This project defines a custom element named `<ka-tex>` that renders LaTeX-style expressions inside a shadow DOM, with support for inline and block rendering, custom error handling, and live updates.
 
-`<ka-tex>` simply wraps the KaTeX library and provides a declarative way to include math in your web pages. Since this is a web-component, it can be used in any modern browser and in any framework.
+`<ka-tex>` simply wraps the [KaTeX][KaTeX] library and provides a declarative way to include math in your web pages. Since this is a [web-component][Web Components], it can be used in any modern browser and in any framework.
 
 ## Features
 
-- Renders LaTeX expressions with KaTeX
+- Renders LaTeX expressions with [KaTeX][KaTeX]
 - Supports inline and block layout modes
 - Handles invalid expressions gracefully
 - Works as a plain HTML element with no build step required
@@ -32,9 +32,9 @@ This project defines a custom element named `<ka-tex>` that renders LaTeX-style 
     ```html
     <ka-tex block expression="\sigma = \frac{\sum_0^N{(x - \mu)^2}}{N}"></ka-tex>
     ```
-    $$
-    \sigma = \frac{\sum_0^N{(x - \mu)^2}}{N}
-    $$
+$$
+\sigma = \frac{\sum_0^N{(x - \mu)^2}}{N}
+$$
 
 ## Usage
 
@@ -64,7 +64,7 @@ $$
 
 <span style="color: #ff8800;">\fakeCommand</span>${\pi}$
 
-### Throw errors instead of rendering them in red
+### Throw errors instead of rendering them
 
 ```html
 <ka-tex expression="\fakeCommand{\pi}" throw-on-error></ka-tex>
@@ -91,8 +91,11 @@ Open [index.html](index.html) in a browser to see the component in action.
 
 ## Thanks and Attribution
 
-This project uses [KaTeX](https://katex.org/) for mathematical typesetting. KaTeX is an excellent open-source library for fast and beautiful rendering of LaTeX in the browser.
+This project uses [KaTeX][KaTeX] for mathematical typesetting. [KaTeX][KaTeX] is an excellent open-source library for fast and beautiful rendering of LaTeX in the browser.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+[KaTeX]: https://katex.org/
+[Web Components]: https://developer.mozilla.org/en-US/docs/Web/Web_Components
