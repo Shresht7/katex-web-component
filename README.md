@@ -93,6 +93,21 @@ $$
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
 $$
 
+### Svelte example
+
+Just drop in your framework of choice and bind the `expression` attribute to a reactive variable.
+
+```svelte
+<script>
+  import './ka-tex.js'
+
+  let expression = $state('E = mc^2')
+</script>
+
+<ka-tex block {expression}></ka-tex>
+
+<input bind:value={expression} />
+```
 
 ## Attributes
 
