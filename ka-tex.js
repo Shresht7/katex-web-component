@@ -20,7 +20,9 @@ class KaTex extends HTMLElement {
 	}
 
 	/** The observedAttributes getter tells the browser which attributes to monitor for changes. */
-	observedAttributes = ['expression', 'block']
+	static get observedAttributes() {
+		return ['expression', 'block', 'throw-on-error', 'error-color']
+	}
 
 	/** if 'throw-on-error' attribute is present, KaTeX will throw errors instead of rendering them in red. */
 	get throwOnError() {
