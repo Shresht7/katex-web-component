@@ -19,7 +19,7 @@ class KaTex extends HTMLElement {
 		this.shadowRoot.append(this.container)
 	}
 
-	/** The observedAttributes getter tells the browser which attributes to monitor for changes. */
+	/** The `observedAttributes` getter tells the browser which attributes to monitor for changes. */
 	static get observedAttributes() {
 		return ['expression', 'block', 'throw-on-error', 'error-color']
 	}
@@ -34,20 +34,20 @@ class KaTex extends HTMLElement {
 		return this.getAttribute('error-color') || '#cc0000'
 	}
 
-	/** The attributeChangedCallback is called whenever one of the observed attributes changes. */
+	/** The `attributeChangedCallback` is called whenever one of the observed attributes changes. */
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (oldValue !== newValue) {
 			this.renderKaTeX(newValue)
 		}
 	}
 
-	/** The connectedCallback is called when the element is added to the DOM. */
+	/** The `connectedCallback` is called when the element is added to the DOM. */
 	connectedCallback() {
 		const expression = this.getAttribute('expression')
 		this.renderKaTeX(expression)
 	}
 
-	/** The renderKaTeX method uses KaTeX to render the mathematical expression. */
+	/** The `renderKaTeX` method uses KaTeX to render the mathematical expression. */
 	renderKaTeX(expression) {
 		if (!expression) { return }
 
