@@ -23,6 +23,22 @@
     <p>Expressions that contain errors will be displayed in red unless the 'throw-on-error' attribute is present, in
         which case an error will be thrown.</p>
 
+    <h2>Dynamic Update</h2>
+    <p>Type a <ka-tex expression="\LaTeX"></ka-tex> expression in the input below to see it rendered live.</p>
+    <ka-tex id="dynamic" expression="x^2 + y^2 = z^2" style="padding: 0 0.5rem;"></ka-tex>
+    <div style="margin-block: 0.5rem;"></div>
+    <input type="text" id="input" placeholder="x^2 + y^2 = z^2" style="padding: 0.5rem 0.5rem;" />
+
+    <script type="module">
+        const dynamicKaTex = document.getElementById('dynamic');
+        const input = document.getElementById('input');
+
+        input.addEventListener('input', () => {
+            const expr = input.value || input.getAttribute('placeholder');
+            dynamicKaTex.setAttribute('expression', expr);
+        });
+    </script>
+
 </body>
 
 </html>
