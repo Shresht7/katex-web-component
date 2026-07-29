@@ -7,6 +7,9 @@ fetch('https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css')
 	.then(res => res.text())
 	.then(css => katexStylesheet.replace(css))
 
+// TODO: Think about distribution and packaging for npm, jsr, cdn etc.
+// Bundling in the katex library and css will produce a more self-contained component, but will increase the size of the package.
+
 // Define the KaTex custom element
 class KaTex extends HTMLElement {
 
